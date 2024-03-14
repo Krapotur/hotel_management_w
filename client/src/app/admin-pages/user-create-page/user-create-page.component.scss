@@ -6,7 +6,7 @@ $lora: 'Source Sans Pro', Lora, Arial, sans-serif;
   user-select: none;
 }
 
-.container {
+.container-block {
   user-select: none;
   position: fixed;
   display: flex;
@@ -15,7 +15,7 @@ $lora: 'Source Sans Pro', Lora, Arial, sans-serif;
   top: 8%;
   left: 30%;
   width: 600px;
-  border: 1px solid seagreen;
+  box-shadow: grey 0 2px 5px;
   background-color: white;
   padding: 45px 50px 40px 50px;
 }
@@ -31,19 +31,19 @@ $lora: 'Source Sans Pro', Lora, Arial, sans-serif;
 
   h2 {
     color: #3C3735;
-    font-size: 30px;
+    font-size: 25px;
   }
 
   img {
     padding-right: 15px;
-    width: 60px;
+    width: 50px;
   }
 
   .img-del img {
     cursor: pointer;
     position: absolute;
     padding-right: 0;
-    width: 50px;
+    width: 36px;
     top: 5px;
     right: 5px;
   }
@@ -63,6 +63,7 @@ $lora: 'Source Sans Pro', Lora, Arial, sans-serif;
 
   input {
     margin: 0;
+    padding-left: 10px;
   }
 }
 
@@ -97,6 +98,7 @@ $lora: 'Source Sans Pro', Lora, Arial, sans-serif;
 
 #phone {
   width: 200px;
+  padding-left: 10px;
 }
 
 span {
@@ -165,14 +167,14 @@ mat-hint {
   flex-direction: column;
   top: 30%;
   left: 43%;
-  width: 40vh;
+  width: 340px;
   border: 1px solid brown;
   background-color: white;
   padding: 25px 0 5px 0;
 
 
   h2 {
-    font-size: 25px;
+    font-size: 20px;
     padding-bottom: 5px;
   }
 

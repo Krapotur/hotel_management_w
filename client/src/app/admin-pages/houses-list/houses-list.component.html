@@ -127,6 +127,7 @@
             <label for="textarea2">Комментарий персонала:</label>
             <textarea id="textarea2"
                       maxlength="200"
+                      [disabled] = "house.comments"
             >{{ house.comments }}</textarea>
           </div>
         </div>

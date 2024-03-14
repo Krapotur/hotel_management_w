@@ -8,7 +8,7 @@ import {Hotel, Room, User} from "../../shared/interfaces";
 import {StateService} from "../../shared/services/state.service";
 import {HotelsService} from "../../shared/services/hotels.service";
 import {Subscription} from "rxjs";
-import {ActivatedRoute, Router} from "@angular/router";
+import { Router} from "@angular/router";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {UsersService} from "../../shared/services/users.service";
@@ -53,7 +53,6 @@ export class HotelCreatePageComponent implements OnInit, DoCheck, OnDestroy {
   uSub: Subscription
 
   constructor(private router: Router,
-              private route: ActivatedRoute,
               private stateService: StateService,
               private hotelService: HotelsService,
               private roomsService: RoomsService,
@@ -237,7 +236,7 @@ export class HotelCreatePageComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   openHotelsPage() {
-    this.router.navigate(['admin-panel/hotels'])
+    this.router.navigate(['admin-panel/hotels']).then()
   }
 
   protected readonly Number = Number;

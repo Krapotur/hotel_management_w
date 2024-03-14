@@ -1,5 +1,5 @@
 <div class="list-rooms">
-  <h4>Список номеров</h4>
+<!--  <h4>Список номеров</h4>-->
   <div class="floor-container" *ngFor="let floor of floors">
     <h3>{{ floor.numberFloor }} этаж</h3>
     <div class="rooms">
@@ -120,6 +120,7 @@
           <label for="textarea2">Комментарий персонала:</label>
           <textarea id="textarea2"
                     maxlength="200"
+                    [disabled]="room.comments"
           >{{room.comments}}</textarea>
         </div>
 

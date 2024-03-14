@@ -106,7 +106,7 @@ button {
   margin: 0 auto;
   text-align: center;
   color: #F87839;
-  width: 79vw;
+  width: 83vw;
 
   h2 {
     margin: 0;
@@ -126,6 +126,7 @@ button {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 20px;
+  padding-bottom: 20px;
   margin: 15px 0 10px 5px;
 
   .card-item {
@@ -207,6 +208,7 @@ button {
     box-shadow: black 0 2px 15px;
   }
 }
+
 
 ///////Edit-Form
 .house-container {

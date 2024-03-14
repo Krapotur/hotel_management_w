@@ -1,4 +1,3 @@
-$nunito: 'Source Sans Pro', Nunito, Arial, sans-serif;
 $lora: 'Source Sans Pro', Lora, Arial, sans-serif;
 $greyWithOpacity_01: rgba(128, 128, 128, 0.1);
 $greyWithOpacity_04: rgba(128, 128, 128, 0.4);
@@ -13,13 +12,13 @@ $greyWithOpacity_04: rgba(128, 128, 128, 0.4);
   filter: blur(5px);
 }
 
-.container {
-  position: relative;
+.container-block {
   display: flex;
   justify-content: space-around;
   align-items: self-start;
   background-color: white;
-  width: 100vh;
+  width: 55vw;
+  padding-top: 50px;
 }
 
 .left-block {
@@ -27,7 +26,7 @@ $greyWithOpacity_04: rgba(128, 128, 128, 0.4);
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 40vh;
+  width: 400px;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
   padding: 60px 0 50px 0;
 
@@ -43,12 +42,12 @@ $greyWithOpacity_04: rgba(128, 128, 128, 0.4);
   }
 
   h2 {
-    font-size: 28px;
+    font-size: 25px;
     color: #35302D;
   }
 
   p {
-    font-size: 28px;
+    font-size: 23px;
     color: #F57C23;
     padding-bottom: 40px;
   }

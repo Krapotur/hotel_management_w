@@ -199,4 +199,6 @@ export class HousesListComponent implements OnInit, OnDestroy {
       error: error => MaterialService.toast(error.error.message)
     })
   }
+
+    protected readonly scrollY = scrollY;
 }
