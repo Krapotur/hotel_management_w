@@ -146,7 +146,7 @@ export class HouseEditPageComponent implements OnInit,DoCheck, OnDestroy {
   }
 
   openHousesPage() {
-    this.router.navigate(['admin-panel/houses'])
+    this.router.navigate(['admin-panel/houses']).then()
   }
 
   deleteHouse() {
@@ -154,7 +154,7 @@ export class HouseEditPageComponent implements OnInit,DoCheck, OnDestroy {
       next: message => MaterialService.toast(message.message),
       error: error => MaterialService.toast(error.error.message)
     })
-    this.router.navigate([`admin-panel/houses`])
+    this.router.navigate([`admin-panel/houses`]).then()
   }
 
 }

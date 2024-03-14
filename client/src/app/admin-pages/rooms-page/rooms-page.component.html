@@ -13,13 +13,15 @@
                 src="../assets/icons/remove.png" alt="remove"
               >
             </div>
-            <button
-              [class]="room.status === 'notReady' ? 'room-dirty': 'room-ready'" extended="" mat-fab
-              (click)="selectRoom(room)"
-              [disabled]="isParams"
-            >
-              {{ room.numberRoom }}
-            </button>
+            <div [class]="room.comments ? 'inProcess' : ''">
+              <button
+                [class]="room.status === 'notReady' ? 'room-dirty': 'room-ready'" extended="" mat-fab
+                (click)="selectRoom(room)"
+                [disabled]="isParams"
+              >
+                {{ room.numberRoom }}
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -114,6 +116,13 @@
                   placeholder="Что требуется сделать?"
                   formControlName="task"
         ></textarea>
+        <div class="comments" *ngIf="room.comments">
+          <label for="textarea2">Комментарий персонала:</label>
+          <textarea id="textarea2"
+                    maxlength="200"
+          >{{room.comments}}</textarea>
+        </div>
+
       </div>
 
       <div class="btn-group">

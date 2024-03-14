@@ -27,7 +27,8 @@
         <ng-container matColumnDef="personal">
           <th mat-header-cell *matHeaderCellDef> Горничная</th>
           <td mat-cell
-              *matCellDef="let house"> {{house.personal.length > 1 ? house.personal[0] + ' ( еще ' + (house.personal.length - 1) + ')' : house.personal}}</td>
+              *matCellDef="let house"> {{ house.personal.length > 1 ? house.personal[0] + ' ( еще ' + (house.personal.length - 1) + ')' : house.personal }}
+          </td>
         </ng-container>
 
         <!-- Edit Column -->
@@ -80,68 +81,74 @@
     <div class="finder" *ngIf="!isAdmin">
       <input matInput type="text" [(ngModel)]="search" placeholder="Поиск дома">
     </div>
-</div>
+  </div>
 
-<div *ngIf="!isAdmin">
-  <div class="cards">
-    <div class="card-item" *ngFor="let house of houses | filterStatusActive | find: search">
-      <div [class]="house.statusReady == 'isReady'?'title-block-green' : 'title-block-red'">
-        <p>{{ house.title }}</p>
-      </div>
-      <div class="img-block">
-        <img [ngSrc]="house.imgSrc" alt="image" fill="" (click)="openTemplateEditStatus(house)">
-      </div>
-      <div [class]="house.statusReady == 'isReady'?'title-block-green' : 'title-block-red'">
-        <span>Готовность дома</span>
-        <hr>
-        <div>
-          <span>{{house.statusReady | status}}</span>
+  <div *ngIf="!isAdmin">
+    <div class="cards">
+      <div class="card-item" *ngFor="let house of houses | filterStatusActive | find: search">
+          <div [class]="house | statusClass">
+            <p>{{ house.title }}</p>
+          </div>
+        <div class="img-block">
+          <img [ngSrc]="house.imgSrc" alt="image" fill="" (click)="openTemplateEditStatus(house)">
+        </div>
+        <div [class]="house | statusClass">
+          <span>Готовность дома</span>
+          <hr>
+          <div>
+            <span>{{ house.statusReady | status }}</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<!--Edit Template-->
-<div *ngIf="isEdit">
-  <form [formGroup]="form">
-    <div class="house-container">
-      <p>Изменение статуса</p>
-      <span>"{{house.title}}"</span>
-      <mat-form-field>
-        <mat-label>Выберите статус</mat-label>
-        <mat-select formControlName="status">
-          <mat-option [value]="status" *ngFor="let status of statuses">{{ status }}</mat-option>
-        </mat-select>
-      </mat-form-field>
+  <!--Edit Template-->
+  <div *ngIf="isEdit">
+    <form [formGroup]="form">
+      <div class="house-container">
+        <p>Изменение статуса</p>
+        <span>"{{ house.title }}"</span>
+        <mat-form-field>
+          <mat-label>Выберите статус</mat-label>
+          <mat-select formControlName="status">
+            <mat-option [value]="status" *ngFor="let status of statuses">{{ status }}</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <div class="task-block">
-        <label for="textarea">Задание:</label>
-        <textarea id="textarea"
-                  maxlength="200"
-                  placeholder="Что требуется сделать?"
-                  formControlName="task"
-        ></textarea>
+        <div class="task-block">
+          <label for="textarea">Задание:</label>
+          <textarea id="textarea"
+                    maxlength="200"
+                    placeholder="Что требуется сделать?"
+                    formControlName="task"
+          ></textarea>
+          <div class="comments" *ngIf="house.comments">
+            <label for="textarea2">Комментарий персонала:</label>
+            <textarea id="textarea2"
+                      maxlength="200"
+            >{{ house.comments }}</textarea>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button
+            class="btn-cancel" extended="" mat-fab
+            (click)="isEdit = !isEdit"
+          >
+            Отмена
+          </button>
+          <button
+            type="submit"
+            class="btn-save" extended="" mat-fab
+            (click)="onSubmit()"
+            [disabled]="form.disabled"
+          >
+            Сохранить
+          </button>
+        </div>
       </div>
-
-      <div class="btn-group">
-        <button
-          class="btn-cancel" extended="" mat-fab
-          (click)="isEdit = !isEdit"
-        >
-          Отмена
-        </button>
-        <button
-          type="submit"
-          class="btn-save" extended="" mat-fab
-          (click)="onSubmit()"
-          [disabled]="form.disabled"
-        >
-          Сохранить
-        </button>
-      </div>
-    </div>
-  </form>
+    </form>
+  </div>
+  <!--Edit Template-->
 </div>
-<!--Edit Template-->
-

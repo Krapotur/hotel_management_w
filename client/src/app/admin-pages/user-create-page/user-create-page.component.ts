@@ -85,7 +85,7 @@ export class UserCreatePageComponent implements OnInit, DoCheck, OnDestroy {
     this.form = new FormGroup({
       lastName: new FormControl(null, [Validators.required, Validators.minLength(3)]),
       firstName: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      phone: new FormControl(null, [Validators.required, Validators.min(9000000000),Validators.max(9999999999)]),
+      phone: new FormControl(null, [Validators.min(9000000000),Validators.max(9999999999)]),
       post: new FormControl(null, [Validators.required, Validators.minLength(3)]),
       login: new FormControl(null, [Validators.required, Validators.minLength(3)]),
       password: new FormControl(null, [Validators.required]),

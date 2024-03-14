@@ -16,10 +16,10 @@ const roomSchema = new Schema({
         default: 'isReady'
     },
      tasks: {
-        type: [],
+        type: String,
     },
     comments: {
-        type: [],
+        type: String,
     },
     hotel: {
         ref: 'hotels',

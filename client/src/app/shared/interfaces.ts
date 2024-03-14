@@ -27,8 +27,8 @@ export interface House {
   floors?: number,
   imgSrc?: string,
   personal?: string[],
-  tasks?: string[],
-  comments?: string[]
+  tasks?: string,
+  comments?: string
 }
 
 export interface Floor {
@@ -64,7 +64,7 @@ export interface Room {
   numberRoom?: number,
   floor?: number,
   tasks?:string[],
-  comments?: string[],
+  comments?: string,
   roomsStr?: string[],
   hotelTitle?: string,
   hotel?: string

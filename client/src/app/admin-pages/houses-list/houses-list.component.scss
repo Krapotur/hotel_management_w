@@ -106,7 +106,7 @@ button {
   margin: 0 auto;
   text-align: center;
   color: #F87839;
-  width: 84vw;
+  width: 79vw;
 
   h2 {
     margin: 0;
@@ -152,6 +152,21 @@ button {
       flex-direction: column;
       align-items: center;
       background-color: #3EB489;
+
+      p {
+        font-size: 18px;
+        color: white;
+        font-weight: 400;
+      }
+    }
+
+    .title-block-orange{
+      width: 100%;
+      padding: 5px 0 10px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #F87839;
 
       p {
         font-size: 18px;
@@ -242,6 +257,13 @@ button {
       outline: none;
       box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
     }
+  }
+}
+
+.comments{
+  #textarea2{
+    border: 1px dashed rgba(128, 128, 128, 0.45);
+    color: rgba(56, 55, 55, 0.65);
   }
 }
 

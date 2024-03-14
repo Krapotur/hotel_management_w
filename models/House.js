@@ -17,10 +17,10 @@ const houseSchema = new Schema({
         default: 'isReady'
     },
     tasks:{
-        type: []
+        type: String
     },
     comments:{
-      type: []
+      type: String
     },
     imgSrc: {
         type: String,

@@ -65,6 +65,13 @@ h4 {
   width: 60px;
 }
 
+.inProcess{
+  button{
+    background-color: #F87839;
+    width: 60px;
+  }
+}
+
 .delete-room button {
   background-color: lightgrey;
   width: 60px;
@@ -125,6 +132,13 @@ h4 {
       outline: none;
       box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
     }
+  }
+}
+
+.comments{
+  #textarea2{
+    border: 1px dashed rgba(128, 128, 128, 0.45);
+    color: rgba(56, 55, 55, 0.65);
   }
 }
 

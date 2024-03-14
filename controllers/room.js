@@ -32,7 +32,7 @@ module.exports.create = async function (req, res) {
                     numberRoom: Number(j),
                     floor: arr[0],
                     status: 'isReady',
-                    tasks: [],
+                    tasks: '',
                     hotel: hotel._id
                 }
                 rooms.push(room)
@@ -102,10 +102,10 @@ module.exports.update = async function (req, res) {
         comments: req.body.comments
     }
 
-    if (req.body.status === 'isReady'){
-         updated.comments = []
-         updated.tasks = []
-        }
+    if (req.body.status === 'isReady') {
+        updated.comments = ''
+        updated.tasks = ''
+    }
 
 
     try {

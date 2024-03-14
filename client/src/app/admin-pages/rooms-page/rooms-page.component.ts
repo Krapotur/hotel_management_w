@@ -117,7 +117,7 @@ export class RoomsPageComponent implements OnInit, OnDestroy {
 
     this.form = new FormGroup({
       status: new FormControl(status),
-      task: new FormControl(this.room.tasks)
+      task: new FormControl(this.room.tasks),
     })
   }
 

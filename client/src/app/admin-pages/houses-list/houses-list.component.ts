@@ -20,6 +20,8 @@ import {FilterStatusActivePipe} from "../../shared/pipes/filter-status-active.pi
 import {FindPipe} from "../../shared/pipes/find.pipe";
 import {AuthService} from "../../shared/services/auth.service";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {FilterUsersPipe} from "../../shared/pipes/filter-users.pipe";
+import {StatusClassPipe} from "../../shared/pipes/status-class.pipe";
 
 @Component({
   selector: 'app-houses-list',
@@ -42,6 +44,8 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
     FilterStatusActivePipe,
     FindPipe,
     MatProgressBarModule,
+    FilterUsersPipe,
+    StatusClassPipe,
   ],
   templateUrl: './houses-list.component.html',
   styleUrl: './houses-list.component.scss'
