@@ -1,5 +1,4 @@
 //@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
-//@import url('https://fonts.googleapis.com/css2?family=Lora&family=Nunito+Sans:opsz,wght@6..12,300&display=swap');
 // FONTS
 
 $lora: 'Source Sans Pro', Lora, Arial, sans-serif;
@@ -12,7 +11,7 @@ $lora: 'Source Sans Pro', Lora, Arial, sans-serif;
 
 // COLORS
 $orange: #F87839;
-$gray: #fbfbfb;
+$gray: linear-gradient(280.20563200957037deg, #73C8A9, #373B44);
 $gray-shine: #3C3735;
 $white-off: #DFDBD9;
 
@@ -31,7 +30,7 @@ $white-off: #DFDBD9;
   padding: 20px;
 
   p {
-    color: $orange;
+    color: rgb(201, 200, 200);
     font: 400 16px $lora;
   }
 
@@ -89,7 +88,7 @@ hr {
 }
 
 .sidebar-left {
-  background-color: $gray;
+  background-image: $gray;
   min-width: 250px;
   box-shadow: 11px 0 18px -15px rgb(171, 171, 171);
 
@@ -107,10 +106,10 @@ hr {
 // HOVER SLIDE EFFECT
 .list-hover-slide {
 
-  li {
-    position: relative;
-    overflow: hidden;
-  }
+  //li {
+  //  position: relative;
+  //  overflow: hidden;
+  //}
 
   a {
     display: block;
@@ -168,16 +167,6 @@ hr {
   align-items: center;
   padding: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
-}
-
-////Footer////
-.footer{
-  height: 50px;
-  position: sticky;
-  bottom: 0;
-  z-index: 3;
-  background-color: white;
-  box-shadow: 0 -5px 5px -5px rgba(0, 0, 0, .5);
 }
 
 ///Loader////
