@@ -59,6 +59,7 @@ export class HotelsListPageComponent implements OnInit, AfterViewInit, OnDestroy
   hotels: Hotel[] = []
   isAdmin = false
   search = ''
+  isEmpty = false
 
   constructor(private router: Router,
               private hotelService: HotelsService,
@@ -73,7 +74,7 @@ export class HotelsListPageComponent implements OnInit, AfterViewInit, OnDestroy
 
   ngOnInit() {
     this.getHotels()
-    if(JSON.parse(localStorage['user']).post !== 'Администратор') this.isAdmin = true
+    if (JSON.parse(localStorage['user']).post !== 'Администратор') this.isAdmin = true
   }
 
   ngAfterViewInit() {
@@ -96,22 +97,26 @@ export class HotelsListPageComponent implements OnInit, AfterViewInit, OnDestroy
     this.hSub = this.hotelService.getAll().subscribe({
       next: hotels => {
         let position = 1
+        let activeHotels = hotels.filter(hotel => hotel.status)
+
         this.hotels = hotels
         this.getUsers(this.hotels)
         this.getQuantityRoomsInHotel(this.hotels)
         this.hotels.map(hotel => hotel.position = position++)
+        if(activeHotels.length == 0) this.isEmpty = true
         this.dataSource = new MatTableDataSource<Hotel>(this.hotels)
         this.dataSource.paginator = this.paginator
+
       }
     })
   }
 
-  getPercentReadyRooms(rooms: Room[]){
+  getPercentReadyRooms(rooms: Room[]) {
     let quantityRooms = rooms.length
     let readyRooms = 0
     let percent: number
 
-    rooms.forEach(room=> {
+    rooms.forEach(room => {
       if (room.status == 'isReady') readyRooms++
     })
 
@@ -123,7 +128,7 @@ export class HotelsListPageComponent implements OnInit, AfterViewInit, OnDestroy
   getUsers(hotels: Hotel[]) {
     this.uSub = this.userService.getUsers().subscribe({
       next: users => {
-       hotels.forEach(hotel => {
+        hotels.forEach(hotel => {
           let arr = hotel.personal
           hotel.personal = []
 
@@ -143,7 +148,7 @@ export class HotelsListPageComponent implements OnInit, AfterViewInit, OnDestroy
         hotels.map(hotel => {
           let notReadyRooms = 0
           let inProcessRooms = 0
-          let roomsHotel = rooms.filter( room => hotel._id == room.hotel)
+          let roomsHotel = rooms.filter(room => hotel._id == room.hotel)
           hotel.percentReadyRooms = this.getPercentReadyRooms(roomsHotel)
           hotel.quantityRooms = roomsHotel.length
 
@@ -160,19 +165,19 @@ export class HotelsListPageComponent implements OnInit, AfterViewInit, OnDestroy
 
   openCreateHotelPage(hotel?: Hotel) {
     if (hotel) {
-      if(this.isAdmin) {
+      if (this.isAdmin) {
         this.router.navigate([`admin-panel/hotel-edit/${hotel._id}`], {
           queryParams: {
             edit: true
           }
         }).then()
-      }else this.router.navigate([`management/hotel/${hotel._id}`]).then()
+      } else this.router.navigate([`management/hotel/${hotel._id}`]).then()
     } else {
       this.router.navigate(['admin-panel/hotel-create']).then()
     }
   }
 
-  changeStatus(hotel: Hotel){
+  changeStatus(hotel: Hotel) {
     let fd = new FormData()
     fd.set('status', (!hotel.status).toString())
 
@@ -183,7 +188,7 @@ export class HotelsListPageComponent implements OnInit, AfterViewInit, OnDestroy
   }
 
   protected readonly find = find;
-    protected readonly scrollY = scrollY;
+  protected readonly scrollY = scrollY;
   protected readonly scrollX = scrollX;
   protected readonly scrollbars = scrollbars;
 }

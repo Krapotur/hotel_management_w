@@ -98,7 +98,7 @@ button {
   top: 0;
   background-color: white;
   z-index: 1;
-  padding-top: 20px;
+  padding: 40px 0 20px 0;
   box-shadow: 0 5px 5px -5px rgba(0, 0, 0, .5);
 }
 
@@ -106,10 +106,31 @@ button {
   margin: 0 auto;
   text-align: center;
   color: #F87839;
-  width: 80vw;
+  width: 83vw;
+  font-size: 40px;
 
   h2 {
     margin: 0;
+  }
+}
+
+.empty-list{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 60vh;
+
+  p{
+    text-align: center;
+    font-size: 20px;
+    padding: 50px 0 0 0;
+    color: #989696;
+  }
+  img{
+    filter: opacity(50%);
+    cursor: auto;
   }
 }
 
@@ -212,7 +233,7 @@ button {
   align-items: center;
   padding: 35px 40px;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
-  z-index: 2;
+  z-index: 3;
   top: 10%;
   margin: 0;
   left: 40%;
@@ -291,8 +312,12 @@ button {
   height: 50px;
   position: sticky;
   bottom: 0;
-  z-index: 3;
+  z-index: 1;
   background-color: white;
   box-shadow: 0 -5px 5px -5px rgba(0, 0, 0, .5);
 }
 
+.mat-mdc-slide-toggle.mat-warn {
+  --mdc-switch-selected-handle-color: #f65405;
+  --mdc-switch-selected-track-color: #f87a56;
+}

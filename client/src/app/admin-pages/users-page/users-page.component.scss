@@ -10,7 +10,6 @@ $lora: 'Source Sans Pro', Lora, Arial, sans-serif;
 .main {
   user-select: none;
   display: flex;
-  flex-direction: column;
   gap: 10px;
   justify-content: space-evenly;
   align-items: flex-start;
@@ -72,5 +71,10 @@ button {
 }
 
 .table-posts {
-  margin: 10px 0;
+  margin: 23px 0;
+}
+
+.mat-mdc-slide-toggle.mat-warn {
+  --mdc-switch-selected-handle-color: #f65405;
+  --mdc-switch-selected-track-color: #f87a56;
 }

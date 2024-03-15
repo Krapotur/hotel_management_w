@@ -7,24 +7,25 @@ $greyWithOpacity_04: rgba(128, 128, 128, 0.4);
   user-select: none;
 }
 
-.header{
+.header {
   display: flex;
   padding: 40px;
   justify-content: center;
   margin-left: 200px;
 
-  a{
+  a {
     color: grey;
     font-size: 22px;
     font-weight: 500;
   }
-  a:hover{
-    color:  #F87839;
+
+  a:hover {
+    color: #F87839;
     font-size: 22px;
     font-weight: 500;
   }
 
-  h2{
+  h2 {
     margin: 0;
     font-size: 35px;
     text-align: center;
@@ -86,6 +87,7 @@ $greyWithOpacity_04: rgba(128, 128, 128, 0.4);
   }
 
   .personal-block {
+    background-image: linear-gradient(0.28764504877243824deg, #95ecc9, #8a95a6);
     box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
     padding: 20px 20px;
 
@@ -101,15 +103,15 @@ $greyWithOpacity_04: rgba(128, 128, 128, 0.4);
       padding: 10px 10px;
     }
   }
+
   hr {
     width: 100%;
     margin-top: 10px;
-    height: 2px;
     outline: none;
-    background-color: #F87839;
+    background-color: #faf8f8;
   }
 
-  .personal{
+  .personal {
     display: flex;
     justify-content: space-between;
   }

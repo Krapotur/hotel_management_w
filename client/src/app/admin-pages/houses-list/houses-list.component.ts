@@ -54,6 +54,7 @@ export class HousesListComponent implements OnInit, OnDestroy {
   showTemplate = false
   isAdmin = false
   isEdit = false
+  isEmpty = false
   dataSource: MatTableDataSource<House>
   form: FormGroup
   house: House
@@ -113,9 +114,13 @@ export class HousesListComponent implements OnInit, OnDestroy {
   getHouses() {
     this.hSub = this.houseService.getAll().subscribe({
       next: houses => {
-        this.houses = houses
         let position = 1
+        let activeHotels = houses.filter(house => house.status)
+
+        if(activeHotels.length == 0) this.isEmpty = true
+
         this.getUsers()
+        this.houses = houses
         this.houses.map(house => house.position = position++)
         this.dataSource = new MatTableDataSource<House>(this.houses);
         this.dataSource.paginator = this.paginator
