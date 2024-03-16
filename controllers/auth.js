@@ -34,7 +34,7 @@ module.exports.login = async function (req, res) {
             })
         } else {
             res.status(404).json({
-                message: 'Такого пользователя не существует, используйте существующий аккаунт'
+                message: 'Такого пользователя не существует'
             })
         }
     } catch (e) {
