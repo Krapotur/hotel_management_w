@@ -9,27 +9,28 @@ import {HousesListComponent} from "../../../admin-pages/houses-list/houses-list.
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {AuthService} from "../../services/auth.service";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MaterialService} from "../../classes/material.service";
 
 @Component({
   selector: 'app-admin-layout',
   standalone: true,
-    imports: [
-        RouterOutlet,
-        RouterLink,
-        RouterModule,
-        CommonModule,
-        HotelsListPageComponent,
-        UsersPageComponent,
-        PostsPageComponent,
-        HotelCreatePageComponent,
-        HousesListComponent,
-        MatSlideToggleModule,
-        MatProgressBarModule
-    ],
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    RouterModule,
+    CommonModule,
+    HotelsListPageComponent,
+    UsersPageComponent,
+    PostsPageComponent,
+    HotelCreatePageComponent,
+    HousesListComponent,
+    MatSlideToggleModule,
+    MatProgressBarModule
+  ],
   templateUrl: './admin-layout.component.html',
   styleUrl: './admin-layout.component.scss'
 })
-export class AdminLayoutComponent implements OnInit{
+export class AdminLayoutComponent implements OnInit {
   user = JSON.parse(localStorage['user'])
   post = localStorage.getItem('post')
   isErrorHttpStatus = false
@@ -39,7 +40,7 @@ export class AdminLayoutComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.auth.getStatus() == 500 ? this.isErrorHttpStatus = true : this.isErrorHttpStatus = false
+    this.isErrorHttpStatus = this.auth.getStatus() == 500
   }
 
   logout() {
@@ -48,9 +49,11 @@ export class AdminLayoutComponent implements OnInit{
   }
 
   selectMode() {
+    if (this.auth.getStatus() == 500) MaterialService.toast('Связь с сервером прервана...')
+
     this.user.post !== 'Администратор' ? this.user.post = 'Администратор' : this.user.post = localStorage.getItem('post')
     localStorage['user'] = JSON.stringify(this.user)
     this.user = JSON.parse(localStorage['user'])
-    this.router.navigate(['management/hotels'])
+    this.router.navigate(['management/hotels']).then()
   }
 }

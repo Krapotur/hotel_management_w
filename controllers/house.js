@@ -63,8 +63,8 @@ module.exports.update = async function (req, res) {
     let updated = {}
 
     if (req.body.status) updated.status = req.body.status
-    if (req.body.statusReady) {
-        updated.statusReady = req.body.statusReady
+    if (req.body.statusReady) updated.statusReady = req.body.statusReady
+    if (req.body.statusReady === 'isReady') {
         updated.comments = ''
         updated.tasks = ''
     }

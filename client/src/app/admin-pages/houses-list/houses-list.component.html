@@ -91,12 +91,12 @@
 
   <div *ngIf="!isAdmin">
     <div class="cards">
-      <div class="card-item" *ngFor="let house of houses | filterStatusActive | find: search">
+      <div class="card-item" *ngFor="let house of houses | filterStatusActive | find: search"  (click)="openTemplateEditStatus(house)">
         <div [class]="house | statusClass">
           <p>{{ house.title }}</p>
         </div>
         <div class="img-block">
-          <img [ngSrc]="house.imgSrc" alt="image" fill="" (click)="openTemplateEditStatus(house)">
+          <img [ngSrc]="house.imgSrc" alt="image" fill="">
         </div>
         <div [class]="house | statusClass">
           <span>Готовность дома</span>

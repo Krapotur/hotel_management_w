@@ -1,9 +1,10 @@
-import {Component, DoCheck, OnInit} from '@angular/core';
+import {Component, DoCheck} from '@angular/core';
 import { Router, RouterLink, RouterOutlet} from "@angular/router";
 import {NgIf} from "@angular/common";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {AuthService} from "../../services/auth.service";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MaterialService} from "../../classes/material.service";
 
 @Component({
   selector: 'app-management-layout',
@@ -29,7 +30,7 @@ export class ManagementLayoutComponent implements DoCheck{
   }
 
   ngDoCheck() {
-    this.auth.getStatus() == 500 ? this.isErrorHttpStatus = true : this.isErrorHttpStatus = false
+    this.isErrorHttpStatus = this.auth.getStatus() == 500;
   }
 
   logout() {
@@ -42,9 +43,11 @@ export class ManagementLayoutComponent implements DoCheck{
   }
 
   selectMode() {
+    if (this.auth.getStatus() == 500) MaterialService.toast('Связь с сервером прервана...')
+
     this.user.post = localStorage.getItem('post')
     localStorage['user'] = JSON.stringify(this.user)
     this.user = JSON.parse(localStorage['user'])
-    this.router.navigate(['admin-panel/hotels'])
+    this.router.navigate(['admin-panel/hotels']).then()
   }
 }

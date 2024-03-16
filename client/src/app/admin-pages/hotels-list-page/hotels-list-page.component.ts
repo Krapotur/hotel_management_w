@@ -188,7 +188,4 @@ export class HotelsListPageComponent implements OnInit, AfterViewInit, OnDestroy
   }
 
   protected readonly find = find;
-  protected readonly scrollY = scrollY;
-  protected readonly scrollX = scrollX;
-  protected readonly scrollbars = scrollbars;
 }
