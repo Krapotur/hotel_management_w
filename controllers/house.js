@@ -63,19 +63,16 @@ module.exports.update = async function (req, res) {
     let updated = {}
 
     if (req.body.status) updated.status = req.body.status
-    if (req.body.statusReady) updated.statusReady = req.body.statusReady
+    if (req.body.statusReady) {
+        updated.statusReady = req.body.statusReady
+        updated.comments = ''
+        updated.tasks = ''
+    }
     if (req.body.title) updated.title = req.body.title
     if (req.file) updated.imgSrc = req.file.path
-    if (req.body.personal) {
-        updated.personal = req.body.personal
-    } else updated.personal = [];
-    if (req.body.comments) {
-        updated.comments = req.body.comments
-    } else updated.comments = '';
-    if (req.body.tasks) {
-        updated.tasks = req.body.tasks
-    } else updated.tasks = '';
-
+    if (req.body.personal) updated.personal = req.body.personal
+    if (req.body.comments) updated.comments = req.body.comments
+    if (req.body.tasks) updated.tasks = req.body.tasks
 
     try {
         await House.findByIdAndUpdate(
