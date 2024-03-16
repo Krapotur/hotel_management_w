@@ -18,7 +18,6 @@ import {StatusPipe} from "../../shared/pipes/status.pipe";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {FilterStatusActivePipe} from "../../shared/pipes/filter-status-active.pipe";
 import {FindPipe} from "../../shared/pipes/find.pipe";
-import {AuthService} from "../../shared/services/auth.service";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {FilterUsersPipe} from "../../shared/pipes/filter-users.pipe";
 import {StatusClassPipe} from "../../shared/pipes/status-class.pipe";
@@ -72,7 +71,6 @@ export class HousesListComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private usersService: UsersService,
-              private auth: AuthService,
               private houseService: HousesService,
               private router: Router) {
   }
@@ -103,6 +101,7 @@ export class HousesListComponent implements OnInit, OnDestroy {
           for (const user of this.users) {
             if (arr.includes(user._id)) {
               house.personal.push(user.lastName + ' ' + user.firstName)
+              this.personal.push(user.lastName + ' ' + user.firstName)
             }
           }
         })
@@ -204,6 +203,4 @@ export class HousesListComponent implements OnInit, OnDestroy {
       error: error => MaterialService.toast(error.error.message)
     })
   }
-
-    protected readonly scrollY = scrollY;
 }

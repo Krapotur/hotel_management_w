@@ -92,9 +92,9 @@
   <div *ngIf="!isAdmin">
     <div class="cards">
       <div class="card-item" *ngFor="let house of houses | filterStatusActive | find: search">
-          <div [class]="house | statusClass">
-            <p>{{ house.title }}</p>
-          </div>
+        <div [class]="house | statusClass">
+          <p>{{ house.title }}</p>
+        </div>
         <div class="img-block">
           <img [ngSrc]="house.imgSrc" alt="image" fill="" (click)="openTemplateEditStatus(house)">
         </div>
@@ -122,6 +122,20 @@
           </mat-select>
         </mat-form-field>
 
+        <div class="list-personal" *ngIf="isEdit">
+          <mat-form-field >
+            <mat-label>
+              {{house.personal.length > 0 ? house.personal[0] : 'Нет персонала'}}<span class="example-additional-selection" *ngIf="house.personal.length > 1">
+                (еще {{ house.personal.length - 1 }})</span>
+            </mat-label>
+            <mat-select >
+              <mat-option *ngFor="let personal of house.personal"
+              >{{ personal }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
         <div class="task-block">
           <label for="textarea">Задание:</label>
           <textarea id="textarea"
@@ -133,7 +147,7 @@
             <label for="textarea2">Комментарий персонала:</label>
             <textarea id="textarea2"
                       maxlength="200"
-                      [disabled] = "house.comments"
+                      [disabled]="house.comments"
             >{{ house.comments }}</textarea>
           </div>
         </div>

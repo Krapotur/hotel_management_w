@@ -65,8 +65,10 @@ module.exports.update = async function (req, res) {
     if (req.body.status) updated.status = req.body.status
     if (req.body.statusReady) updated.statusReady = req.body.statusReady
     if (req.body.title) updated.title = req.body.title
-    if (req.body.personal) updated.personal = req.body.personal
     if (req.file) updated.imgSrc = req.file.path
+    if (req.body.personal) {
+        updated.personal = req.body.personal
+    } else updated.personal = [];
     if (req.body.comments) {
         updated.comments = req.body.comments
     } else updated.comments = '';
