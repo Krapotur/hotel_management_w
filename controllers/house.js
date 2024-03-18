@@ -59,7 +59,6 @@ module.exports.create = async function (req, res) {
 }
 
 module.exports.update = async function (req, res) {
-
     let updated = {}
 
     if (req.body.status) updated.status = req.body.status

@@ -35,6 +35,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   formPassword: FormGroup
   isTruePassword = true
   isAdmin = false
+  isAuthToken = false
   aSub: Subscription
   pSub: Subscription
   uSub: Subscription
@@ -121,8 +122,8 @@ export class LoginPageComponent implements OnInit, OnDestroy {
         }
       })
     }
-    if(this.auth.getStatus() === 500) MaterialService.toast('Отсутствует связь с сервером, обратитесь к администратору')
-
+    if (this.auth.getStatus() === 500) MaterialService.toast('Отсутствует связь с сервером, обратитесь к администратору')
+    this.auth.setStatus(0)
   }
 
   checkPassword() {
@@ -134,9 +135,9 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     } else this.isTruePassword = true
   }
 
-  openLoginPage(){
-    this.router.navigateByUrl('management/hotels').then(() => {
-      this.router.navigate([`/`]).then()
+  openLoginPage() {
+    this.router.navigate(['admin-panel/hotels']).then(() => {
+        this.router.navigate([`/management/hotels`]).then()
     })
   }
 }

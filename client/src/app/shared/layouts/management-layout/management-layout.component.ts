@@ -54,7 +54,7 @@ export class ManagementLayoutComponent implements DoCheck {
   }
 
   refreshPage() {
-    this.router.navigateByUrl('admin-panel/hotels').then(() => {
+    this.router.navigateByUrl('/').then(() => {
       this.router.navigate([`/management/hotels`]).then()
     })
   }
