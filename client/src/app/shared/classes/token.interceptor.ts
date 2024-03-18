@@ -2,9 +2,7 @@ import {inject} from "@angular/core";
 import {AuthService} from "../services/auth.service";
 import {HttpErrorResponse, HttpInterceptorFn, HttpResponse,} from "@angular/common/http";
 import {tap} from "rxjs";
-import {MaterialService} from "./material.service";
 import {Router} from "@angular/router";
-import {UsersService} from "../services/users.service";
 
 export const TokenInterceptor: HttpInterceptorFn = (req, next) => {
   const auth = inject(AuthService)
@@ -20,7 +18,9 @@ export const TokenInterceptor: HttpInterceptorFn = (req, next) => {
   }
   return next(req).pipe(
     tap(
-      (event: HttpResponse<any>) => ()=>{},
+      (event: HttpResponse<any>) => ()=>{
+        auth.setStatus(event.status)
+      },
       (error: HttpErrorResponse) => {
         if (error.status == 401) {
           router.navigate(['/login'], {

@@ -1,25 +1,27 @@
 import {Component, DoCheck} from '@angular/core';
-import { Router, RouterLink, RouterOutlet} from "@angular/router";
+import {Router, RouterLink, RouterOutlet} from "@angular/router";
 import {NgIf} from "@angular/common";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {AuthService} from "../../services/auth.service";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MaterialService} from "../../classes/material.service";
+import {MatButtonModule} from "@angular/material/button";
 
 @Component({
   selector: 'app-management-layout',
   standalone: true,
-    imports: [
-        RouterLink,
-        RouterOutlet,
-        NgIf,
-        MatSlideToggleModule,
-        MatProgressBarModule
-    ],
+  imports: [
+    RouterLink,
+    RouterOutlet,
+    NgIf,
+    MatSlideToggleModule,
+    MatProgressBarModule,
+    MatButtonModule
+  ],
   templateUrl: './management-layout.component.html',
   styleUrl: './management-layout.component.scss'
 })
-export class ManagementLayoutComponent implements DoCheck{
+export class ManagementLayoutComponent implements DoCheck {
   title = 'Гостиницы'
   isErrorHttpStatus = false
   user = JSON.parse(localStorage['user'])
@@ -49,5 +51,11 @@ export class ManagementLayoutComponent implements DoCheck{
     localStorage['user'] = JSON.stringify(this.user)
     this.user = JSON.parse(localStorage['user'])
     this.router.navigate(['admin-panel/hotels']).then()
+  }
+
+  refreshPage() {
+    this.router.navigateByUrl('admin-panel/hotels').then(() => {
+      this.router.navigate([`/management/hotels`]).then()
+    })
   }
 }

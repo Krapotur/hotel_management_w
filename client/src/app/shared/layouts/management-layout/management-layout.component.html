@@ -38,6 +38,11 @@
     <div class="loader" *ngIf="isErrorHttpStatus">
       <p>Идет соединение с сервером... Попробуйте обновить страницу</p>
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      <button class="btn" extended="" mat-fab
+              (click)="refreshPage()"
+      >
+        Обновить
+      </button>
     </div>
     <router-outlet *ngIf="!isErrorHttpStatus"></router-outlet>
   </div>

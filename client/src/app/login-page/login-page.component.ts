@@ -8,7 +8,7 @@ import {NgIf} from "@angular/common";
 import {MatIconModule} from "@angular/material/icon";
 import {AuthService} from "../shared/services/auth.service";
 import {Subscription} from "rxjs";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {Post, User} from "../shared/interfaces";
 import {MaterialService} from "../shared/classes/material.service";
 import {UsersService} from "../shared/services/users.service";
@@ -24,7 +24,8 @@ import {UsersService} from "../shared/services/users.service";
     MatTooltipModule,
     ReactiveFormsModule,
     NgIf,
-    MatIconModule
+    MatIconModule,
+    RouterLink
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss'
@@ -53,7 +54,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
     this.formPassword = new FormGroup({
       password: new FormControl(null, [Validators.required, Validators.min(6)]),
-      checkPassword: new FormControl(null, [Validators.required]),
+      checkPassword: new FormControl(null, [Validators.required, Validators.min(6)]),
     })
 
     this.route.queryParams.subscribe(params => {
@@ -120,12 +121,22 @@ export class LoginPageComponent implements OnInit, OnDestroy {
         }
       })
     }
+    if(this.auth.getStatus() === 500) MaterialService.toast('Отсутствует связь с сервером, обратитесь к администратору')
+
   }
 
   checkPassword() {
     if (this.formPassword.get('password').value !== this.formPassword.get('checkPassword').value) {
       MaterialService.toast('Пароли не совпадают, проверьте еще раз')
+      this.formPassword.get('password').setValue(null)
+      this.formPassword.get('checkPassword').setValue(null)
       this.isTruePassword = false
     } else this.isTruePassword = true
+  }
+
+  openLoginPage(){
+    this.router.navigateByUrl('management/hotels').then(() => {
+      this.router.navigate([`/`]).then()
+    })
   }
 }
