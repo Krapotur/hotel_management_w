@@ -26,7 +26,7 @@
         <!-- Phone Column -->
         <ng-container matColumnDef="phone">
           <th mat-header-cell *matHeaderCellDef> Телефон</th>
-          <td mat-cell *matCellDef="let user">7{{ user.phone }}</td>
+          <td mat-cell *matCellDef="let user"> <p *ngIf="user.phone.length > 2"> 7{{ user.phone }}</p></td>
         </ng-container>
 
         <!-- Hotel Column -->
