@@ -18,9 +18,9 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "allowedCommonJsDependencies": [
-              "materialize.js"
+              "materialize"
             ],
-            "outputPath": "dist/client",
+            "outputPath": "dist/",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [

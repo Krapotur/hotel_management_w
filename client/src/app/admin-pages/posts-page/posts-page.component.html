@@ -38,7 +38,7 @@
 
         <hr>
         <div class="table-bottom">
-            <button
+            <button *ngIf="posts.length == 4"
                     class="btn" extended="" mat-fab
                     (click)="changeTemplate('add')"
                     [disabled]="isShowTemplate"

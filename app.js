@@ -37,12 +37,22 @@ app.use('/api/users', userRoutes)
 app.use('/api/posts', postRoutes)
 
 if (process.env.NODE_ENV === 'production'){
-    app.use(express.static('client/dist/client'))
+    app.use(express.static('client/dist/browser'))
 
     app.get('*', (req,res) => {
         res.sendFile(
             path.resolve(
-                __dirname, 'client', 'dist', 'client', 'browser', 'index.html'
+                __dirname, 'client', 'dist', 'browser', 'index.html'
+            )
+        )
+    })
+} else {
+    app.use(express.static('client/dist/404'))
+
+    app.get('*', (req,res) => {
+        res.sendFile(
+            path.resolve(
+                __dirname, 'client', 'dist', '404', 'index.html'
             )
         )
     })
