@@ -160,9 +160,13 @@ export class RoomsPageComponent implements OnInit, OnDestroy {
         next: message => MaterialService.toast(message.message),
         error: error => MaterialService.toast(error.error.message)
       })
-      this.router.navigateByUrl('/').then(() => {
-        this.router.navigate([`management/hotel/${this.hotelId}`]).then()
-      })
+
+      setTimeout(()=>{
+        this.router.navigateByUrl('/').then(() => {
+          this.router.navigate([`management/hotel/${this.hotelId}`]).then()
+        })
+      },600)
+
       this.isEdit = !this.isEdit
     }
 
@@ -204,6 +208,5 @@ export class RoomsPageComponent implements OnInit, OnDestroy {
       }).then()
     })
   }
-
 }
 
