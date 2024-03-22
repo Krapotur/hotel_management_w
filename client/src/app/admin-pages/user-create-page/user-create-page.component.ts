@@ -49,7 +49,7 @@ export class UserCreatePageComponent implements OnInit, DoCheck, OnDestroy {
   isDelete = false
   isResetPassword = false
 
-  posts: Post[]
+  posts = ['Руководитель', 'Администратор','Горничная']
 
   constructor(private userService: UsersService,
               private hotelService: HotelsService,
@@ -62,7 +62,7 @@ export class UserCreatePageComponent implements OnInit, DoCheck, OnDestroy {
   ngOnInit() {
     this.getParams()
     this.generateForm()
-    this.getPosts()
+    // this.getPosts()
   }
 
   ngDoCheck() {
@@ -120,13 +120,13 @@ export class UserCreatePageComponent implements OnInit, DoCheck, OnDestroy {
     } else this.titleForm = 'Новый сотрудник'
   }
 
-  getPosts() {
-    this.postsSub = this.postsService.getAll().subscribe({
-      next: posts => {
-        this.posts = posts.filter(post => post.title.toLowerCase() !== 'admin')
-      }
-    })
-  }
+  // getPosts() {
+  //   this.postsSub = this.postsService.getAll().subscribe({
+  //     next: posts => {
+  //       this.posts = posts.filter(post => post.title.toLowerCase() !== 'admin')
+  //     }
+  //   })
+  // }
 
   getHotelsByUser(){
     this.hSub = this.hotelService.getAll().subscribe({

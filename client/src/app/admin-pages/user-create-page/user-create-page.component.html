@@ -64,7 +64,7 @@
           <mat-form-field>
             <mat-label>Должность</mat-label>
             <mat-select formControlName="post">
-              <mat-option [value]="post.title" *ngFor="let post of posts">{{ post.title }}</mat-option>
+              <mat-option [value]="post" *ngFor="let post of posts">{{ post }}</mat-option>
             </mat-select>
             <mat-hint
               *ngIf="form.get('post').hasError('required') && form.get('post').touched"
