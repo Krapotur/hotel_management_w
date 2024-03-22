@@ -2,6 +2,7 @@
 //@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lora&family=Nunito+Sans:opsz,wght@6..12,300&display=swap');
+
 $lora: 'Source Sans Pro', Lora, Arial, sans-serif;
 
 * {
@@ -23,8 +24,8 @@ body {
 
 .login_page_image {
   height: 100vh;
-  width: 50vw;
-  border-right: 15px solid #F57C23;
+  width: 100vw;
+  //border-right: 15px solid #F57C23;
   object-fit: cover;
   user-select: none;
 }
@@ -37,13 +38,18 @@ body {
 }
 
 .login_form {
+  position: absolute;
+  top: 35%;
+  left: 41%;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 320px;
-  padding: 20px 30px 50px 30px;
+  padding: 40px 30px 50px 30px;
   border-radius: 3px;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+  background-color: white;
 }
 
 .logo img {
@@ -74,7 +80,8 @@ body {
       width: 100%;
       margin-bottom: 0;
     }
-    label{
+
+    label {
       border-bottom: #F57C23;
     }
   }
@@ -93,9 +100,24 @@ body {
     border-radius: 2px;
     background-color: #F57C23;
   }
-  a{
+
+  a {
     cursor: pointer;
     padding-top: 10px;
+  }
+}
+
+
+.container-reset-password {
+  position: absolute;
+  top: 25%;
+  padding: 50px;
+  background-color: white;
+  z-index: 1;
+  border-radius: 3px;
+
+  a {
+    font-size: 13px;
   }
 }
 

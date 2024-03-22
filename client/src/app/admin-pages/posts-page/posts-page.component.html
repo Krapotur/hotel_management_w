@@ -32,13 +32,13 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
-        <div *ngIf="isEmptyPosts" class="empty-block">
+        <div *ngIf="posts.length <= 1" class="empty-block">
             <p>Добавьте первую должность...</p>
         </div>
 
         <hr>
         <div class="table-bottom">
-            <button *ngIf="posts.length == 4"
+            <button *ngIf="posts.length <= 4"
                     class="btn" extended="" mat-fab
                     (click)="changeTemplate('add')"
                     [disabled]="isShowTemplate"

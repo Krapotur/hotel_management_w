@@ -4,7 +4,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatButtonModule} from "@angular/material/button";
 import {MatTooltipModule} from "@angular/material/tooltip";
-import {NgIf} from "@angular/common";
+import {NgIf, NgOptimizedImage} from "@angular/common";
 import {MatIconModule} from "@angular/material/icon";
 import {AuthService} from "../shared/services/auth.service";
 import {Subscription} from "rxjs";
@@ -25,7 +25,8 @@ import {UsersService} from "../shared/services/users.service";
     ReactiveFormsModule,
     NgIf,
     MatIconModule,
-    RouterLink
+    RouterLink,
+    NgOptimizedImage
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss'

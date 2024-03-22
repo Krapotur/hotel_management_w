@@ -81,10 +81,11 @@
                    (еще {{ form.get('users').value.length - 1 }})
                    </span>
             </mat-select-trigger>
-            <mat-option *ngFor="let user of users"
-                        [value]=" user._id"
-            >{{ user.lastName + ' ' + user.firstName }}
-            </mat-option>
+              <mat-option *ngFor="let user of users"
+                          [value]=" user._id"
+              >{{ user.lastName + ' ' + user.firstName }}
+              </mat-option>
+
           </mat-select>
         </mat-form-field>
       </div>
@@ -92,7 +93,7 @@
       <hr>
 
       <div class="img-block">
-        <label [for]="inputImgRef">Выберите изображение для: <p style="color: #F57C23"
+        <label>Выберите изображение для: <p style="color: #F57C23"
                                                             class="span-title" *ngIf="title"> "{{ title }}
           "</p></label>
         <div class="img-group">

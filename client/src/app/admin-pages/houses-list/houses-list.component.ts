@@ -163,7 +163,7 @@ export class HousesListComponent implements OnInit, OnDestroy {
     })
   }
 
-  onSubmit() {
+  async onSubmit() {
     let status = ''
     switch (this.form.get('status').value) {
       case 'Готов': {

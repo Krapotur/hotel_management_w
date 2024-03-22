@@ -104,36 +104,37 @@ export class HouseEditPageComponent implements OnInit,DoCheck, OnDestroy {
 
   onSubmit() {
     let title = this.form.get('title').value
-    let house = {
-      title: title.toLowerCase().charAt(0).toUpperCase() + title.slice(1),
-      floors: this.form.get('floors').value,
-      personal: this.form.get('users').value
+
+    const fd = new FormData()
+    fd.append('title', title.toLowerCase().charAt(0).toUpperCase() + title.slice(1))
+    fd.append('floors', this.form.get('floors').value.toString())
+
+    if (this.form.get('users').value) {
+      for (let i = 0; i < this.form.get('users').value.length; i++) {
+        fd.append('personal', this.form.get('users').value[i])
+      }
+    }
+
+    if (this.image) {
+      fd.append('image', this.image, this.image.name)
     }
 
     if (!this.houseID) {
-      this.hSub = this.houseService.create(house, this.image).subscribe({
+      this.hSub = this.houseService.create(fd).subscribe({
         next: message => MaterialService.toast(message.message),
         error: error => MaterialService.toast(error.error.message)
       })
-      this.router.navigate(['admin-panel/houses']).then()
+      setTimeout(()=>{
+        this.router.navigate(['admin-panel/houses']).then()
+      }, 1000)
     } else {
-      const fd = new FormData()
-      fd.append('title', house.title)
-      fd.append('floors', house.floors.toString())
-
-      for (let i = 0; i < house.personal.length; i++) {
-        fd.append('personal', house.personal[i])
-      }
-
-      if (this.image) {
-        fd.append('image', this.image, this.image.name)
-      }
-
       this.hSub = this.houseService.update(this.house, fd).subscribe({
         next: message => MaterialService.toast(message.message),
         error: error => MaterialService.toast(error.error.message)
       })
-      this.router.navigate(['admin-panel/houses']).then()
+      setTimeout(()=>{
+        this.router.navigate(['admin-panel/houses']).then()
+      }, 1000)
     }
   }
 
